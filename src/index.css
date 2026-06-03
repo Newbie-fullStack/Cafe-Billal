@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personnalisées pour la palette nature marocaine */
+:root {
+  --color-forest: #2D5016;
+  --color-sage: #7A9E5F;
+  --color-ocre: #C8873A;
+  --color-cream: #F5F0E8;
+  --color-wood: #6B4226;
+  --color-offwhite: #FDFAF5;
+}
+
+/* Reset et base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--color-offwhite);
+  color: var(--color-wood);
+  overflow-x: hidden;
+}
+
+/* Titres en Playfair Display */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Scrollbar personnalisée style nature */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest);
+}
+
+/* Sélection de texte */
+::selection {
+  background-color: var(--color-ocre);
+  color: var(--color-offwhite);
+}
+
+/* Classe utilitaire pour la texture grain */
+.texture-grain {
+  position: relative;
+}
+
+.texture-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Effet glass/blur pour la navbar */
+.glass-nav {
+  background-color: rgba(253, 250, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-nav-dark {
+  background-color: rgba(45, 80, 22, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gradient nature pour le hero */
+.gradient-nature {
+  background: linear-gradient(135deg, #1a3009 0%, #2D5016 40%, #4a6b2a 75%, #6B4226 100%);
+}
+
+/* Ombre douce naturelle */
+.shadow-natural {
+  box-shadow: 0 10px 30px -10px rgba(45, 80, 22, 0.25),
+              0 4px 8px -2px rgba(107, 66, 38, 0.1);
+}
+
+.shadow-natural-lg {
+  box-shadow: 0 20px 50px -15px rgba(45, 80, 22, 0.35),
+              0 8px 16px -4px rgba(107, 66, 38, 0.15);
+}
+
+/* Animation flottante pour les feuilles décoratives */
+@keyframes leaf-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(8deg); }
+  66% { transform: translateY(-5px) rotate(-5deg); }
+}
+
+.leaf-float {
+  animation: leaf-float 9s ease-in-out infinite;
+}
+
+/* Bouton avec effet pulse subtil */
+@keyframes soft-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(122, 158, 95, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(122, 158, 95, 0); }
+}
+
+.btn-pulse {
+  animation: soft-pulse 2.5s infinite;
+}
+
+/* Lien souligné élégant */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
