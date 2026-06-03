@@ -9,6 +9,7 @@ const WHATSAPP_NUMBER = '212600000000'
 const NAV_LINKS = [
   { label: 'Accueil', href: '#hero' },
   { label: 'Menu', href: '#menu' },
+  { label: 'Équipe', href: '#equipe' },
   { label: 'À Propos', href: '#about' },
   { label: 'Contact', href: '#location' }
 ]

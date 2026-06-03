@@ -9,6 +9,7 @@ const QUICK_LINKS = [
   { label: 'Accueil', href: '#hero' },
   { label: 'À Propos', href: '#about' },
   { label: 'Menu', href: '#menu' },
+  { label: 'Équipe', href: '#equipe' },
   { label: 'Réserver', href: '#reservation' },
   { label: 'Contact', href: '#location' }
 ]

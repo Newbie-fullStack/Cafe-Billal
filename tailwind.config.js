@@ -13,7 +13,8 @@ export default {
         ocre: '#C8873A',        // Terre ocre chaud
         cream: '#F5F0E8',       // Crème naturel
         wood: '#6B4226',        // Brun bois
-        offwhite: '#FDFAF5'     // Blanc cassé
+        offwhite: '#FDFAF5',    // Blanc cassé
+        gold: '#C8A96E'         // Or marocain (étoiles, bordures avatar)
       },
       // Typographie : titres serif élégants, corps chaleureux
       fontFamily: {
