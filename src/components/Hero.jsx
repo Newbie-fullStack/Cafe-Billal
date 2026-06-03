@@ -99,8 +99,16 @@ function Hero() {
       </picture>
 
       {/* Overlay sombre pour assurer la lisibilité du texte par-dessus la photo */}
-      <div className="absolute inset-0 bg-gradient-to-b from-forest/80 via-forest/60 to-forest/90 pointer-events-none" />
-      <div className="absolute inset-0 bg-wood/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest/90 via-forest/80 to-forest/95 pointer-events-none" />
+      <div className="absolute inset-0 bg-forest/40 pointer-events-none" />
+      {/* Vignette radiale : centre plus sombre pour le texte, bords plus clairs */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, rgba(20,40,10,0.5) 0%, rgba(20,40,10,0.2) 50%, rgba(20,40,10,0.7) 100%)'
+        }}
+      />
 
       {/* Décorations feuilles flottantes */}
       <div className="absolute top-24 left-4 sm:left-12 text-sage leaf-float pointer-events-none">

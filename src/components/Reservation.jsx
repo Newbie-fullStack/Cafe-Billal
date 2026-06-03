@@ -60,7 +60,7 @@ function Reservation() {
       </picture>
 
       {/* Overlay vert foncé pour assurer la lisibilité par-dessus la photo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-forest/95 via-forest/85 to-wood/90 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-forest/95 via-forest/85 to-forest/95 pointer-events-none" />
 
       {/* Décorations de fond */}
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-sage/20 rounded-full blur-3xl pointer-events-none" />
