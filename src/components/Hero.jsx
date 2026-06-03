@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import OpenStatusBadge from './OpenStatusBadge.jsx'
 
 // Numéro WhatsApp placeholder pour la réservation
 const WHATSAPP_NUMBER = '212600000000'
@@ -134,18 +135,9 @@ function Hero() {
         animate="show"
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-20"
       >
-        {/* Badge "Ouvert maintenant" */}
-        <motion.div
-          variants={itemVariants}
-          className="inline-flex items-center gap-2.5 bg-offwhite/10 backdrop-blur-sm border border-sage/40 rounded-full px-5 py-2 mb-8"
-        >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sage" />
-          </span>
-          <span className="text-cream text-xs sm:text-sm font-body font-semibold tracking-wider uppercase">
-            Ouvert maintenant
-          </span>
+        {/* Badge dynamique "Ouvert/Fermé" selon l'heure du Maroc */}
+        <motion.div variants={itemVariants}>
+          <OpenStatusBadge />
         </motion.div>
 
         {/* Sous-ligne décorative */}
