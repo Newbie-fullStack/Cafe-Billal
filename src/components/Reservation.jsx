@@ -41,12 +41,23 @@ function Reservation() {
       id="reservation"
       className="relative py-20 md:py-28 texture-grain overflow-hidden"
     >
-      {/* Image de fond : ambiance du restaurant */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed pointer-events-none"
-        style={{ backgroundImage: "url('/img/photo3.png')" }}
-        aria-hidden="true"
-      />
+      {/* Image de fond : ambiance du restaurant — <img> en absolute pour éviter bg-fixed (cassé sur iOS) */}
+      <picture aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none">
+        <source
+          type="image/webp"
+          sizes="100vw"
+          srcSet="/img/photo3-768.webp 768w, /img/photo3-1280.webp 1280w"
+        />
+        <img
+          src="/img/photo3-1280.webp"
+          alt=""
+          width="1438"
+          height="1093"
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover"
+        />
+      </picture>
 
       {/* Overlay vert foncé pour assurer la lisibilité par-dessus la photo */}
       <div className="absolute inset-0 bg-gradient-to-br from-forest/95 via-forest/85 to-wood/90 pointer-events-none" />

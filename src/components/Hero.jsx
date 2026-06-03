@@ -79,12 +79,24 @@ function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden texture-grain"
     >
-      {/* Image de fond du Café Bilal */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-        style={{ backgroundImage: "url('/img/miniature2.png')" }}
-        aria-hidden="true"
-      />
+      {/* Image de fond du Café Bilal — <img> avec object-cover évite les problèmes de zoom CSS */}
+      <picture aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none">
+        <source
+          type="image/webp"
+          srcSet="/img/miniature2-768.webp 768w"
+          sizes="100vw"
+        />
+        <img
+          src="/img/miniature2-768.webp"
+          alt=""
+          width="1271"
+          height="1238"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          className="w-full h-full object-cover"
+        />
+      </picture>
 
       {/* Overlay sombre pour assurer la lisibilité du texte par-dessus la photo */}
       <div className="absolute inset-0 bg-gradient-to-b from-forest/80 via-forest/60 to-forest/90 pointer-events-none" />

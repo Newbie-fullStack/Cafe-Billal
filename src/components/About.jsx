@@ -112,13 +112,23 @@ function About() {
               variants={fadeUp}
               className="relative mb-6 rounded-[2rem] overflow-hidden shadow-natural-lg ring-1 ring-sage/20"
             >
-              <div className="aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] w-full">
-                <img
-                  src="/img/photo1.png"
-                  alt="Ambiance du Café Restaurant Bilal à Azrou"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
+              <div className="aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] w-full overflow-hidden">
+                <picture>
+                  <source
+                    type="image/webp"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    srcSet="/img/photo1-400.webp 400w, /img/photo1-600.webp 600w, /img/photo1-800.webp 800w"
+                  />
+                  <img
+                    src="/img/photo1-600.webp"
+                    alt="Ambiance du Café Restaurant Bilal à Azrou"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    width="1023"
+                    height="1537"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </div>
 
               {/* Overlay gradient en bas de la photo */}

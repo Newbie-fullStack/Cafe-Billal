@@ -233,13 +233,23 @@ function Menu() {
           transition={{ duration: 0.8 }}
           className="relative mb-12 rounded-3xl overflow-hidden shadow-natural-lg ring-1 ring-sage/20"
         >
-          <div className="aspect-[16/7] sm:aspect-[16/6] md:aspect-[16/5] w-full">
-            <img
-              src="/img/photo2.png"
-              alt="Spécialités du Café Bilal — pâtes, tacos, grillades"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
-              loading="lazy"
-            />
+          <div className="aspect-[16/7] sm:aspect-[16/6] md:aspect-[16/5] w-full overflow-hidden">
+            <picture>
+              <source
+                type="image/webp"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 100vw"
+                srcSet="/img/photo2-800.webp 800w, /img/photo2-1200.webp 1200w, /img/photo2-1600.webp 1600w"
+              />
+              <img
+                src="/img/photo2-1200.webp"
+                alt="Spécialités du Café Bilal — pâtes, tacos, grillades"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                width="1854"
+                height="848"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
 
           {/* Overlay vert pour lisibilité du texte */}
