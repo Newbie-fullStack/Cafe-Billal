@@ -115,6 +115,124 @@ const MENU_DATA = {
         ]
       }
     ]
+  },
+  // ============================================================
+  // NOUVEAUX ONGLETS : Menu (snacks/petit-déj), Boissons, Restaurant
+  // ============================================================
+  menu: {
+    label: 'Menu / Petit-Déj',
+    icon: '🍳',
+    note: 'Servi toute la journée',
+    groups: [
+      {
+        title: 'Petit-déjeuner marocain',
+        items: [
+          { name: 'Petit-déjeuner complet (msemen, beghrir, harcha, miel, beurre, café)', price: 45, signature: true },
+          { name: 'Msemen nature (x2)', price: 12 },
+          { name: 'Beghrir (crêpes mille trous x3)', price: 15 },
+          { name: 'Harcha (galette de semoule)', price: 10 },
+          { name: 'Sfenj / Beignets (x3)', price: 8 }
+        ]
+      },
+      {
+        title: 'Petit-déjeuner salé & œufs',
+        items: [
+          { name: 'Œufs au plat (x2)', price: 12 },
+          { name: 'Omelette aux herbes', price: 18 },
+          { name: 'Omelette fromage', price: 22 },
+          { name: 'Œufs brouillés à la tomate (chakchouka)', price: 25 }
+        ]
+      },
+      {
+        title: 'Accompagnements & tartines',
+        items: [
+          { name: 'Fromage blanc + miel', price: 15 },
+          { name: 'Confiture maison (abricot / figue)', price: 10 },
+          { name: 'Beurre & miel', price: 10 },
+          { name: 'Tartine avocat-citron', price: 20 }
+        ]
+      }
+    ]
+  },
+  boissons: {
+    label: 'Boissons',
+    icon: '☕',
+    groups: [
+      {
+        title: 'Boissons chaudes',
+        items: [
+          { name: 'Café noir (expresso)', price: 12 },
+          { name: 'Café au lait', price: 15 },
+          { name: 'Cappuccino', price: 18 },
+          { name: 'Café turc', price: 12 },
+          { name: 'Thé à la menthe', price: 15, signature: true },
+          { name: 'Thé à la menthe royal (amandes)', price: 25 },
+          { name: 'Chocolat chaud', price: 18 },
+          { name: 'Chocolat au lait', price: 20 }
+        ]
+      },
+      {
+        title: 'Jus frais & smoothies',
+        items: [
+          { name: 'Jus d\'orange pressé', price: 20 },
+          { name: 'Jus de citron maison', price: 18 },
+          { name: 'Jus d\'avocat (smoothie)', price: 25 },
+          { name: 'Jus de banane', price: 20 },
+          { name: 'Panaché (jus mix maison)', price: 22 },
+          { name: 'Smoothie fruits rouges', price: 30 },
+          { name: 'Smoothie mangue-gingembre', price: 32 }
+        ]
+      },
+      {
+        title: 'Sodas, eau & glaces',
+        items: [
+          { name: 'Eau minérale (50cl)', price: 8 },
+          { name: 'Eau gazeuse (50cl)', price: 10 },
+          { name: 'Coca-Cola', price: 12 },
+          { name: 'Schweppes (Citron / Tonic)', price: 12 },
+          { name: 'Ice Tea (Pêche / Citron)', price: 14 },
+          { name: 'Glace (2 boules au choix)', price: 20 }
+        ]
+      }
+    ]
+  },
+  restaurant: {
+    label: 'Restaurant',
+    icon: '🍲',
+    note: 'Plats signature marocains & internationaux',
+    groups: [
+      {
+        title: 'Spécialités marocaines',
+        items: [
+          { name: 'Tajine de poulet aux olives & citron confit', price: 70, signature: true },
+          { name: 'Tajine de viande aux pruneaux & amandes', price: 85, signature: true },
+          { name: 'Tajine de kefta aux œufs', price: 65 },
+          { name: 'Couscous royal (poulet, agneau, légumes)', price: 90 },
+          { name: 'Couscous aux légumes (7 légumes)', price: 55 },
+          { name: 'Pastilla au poulet & amandes', price: 75 }
+        ]
+      },
+      {
+        title: 'Plats internationaux',
+        items: [
+          { name: 'Poulet rôti aux herbes', price: 70 },
+          { name: 'Escalope milanaise', price: 80 },
+          { name: 'Côtelettes d\'agneau grillées', price: 110 },
+          { name: 'Poisson grillé (selon arrivage)', price: 95 },
+          { name: 'Mix grillades (3 viandes)', price: 130, signature: true }
+        ]
+      },
+      {
+        title: 'Desserts maison',
+        items: [
+          { name: 'Pâtisseries marocaines (assortiment)', price: 35 },
+          { name: 'Crêpe au Nutella & banane', price: 25 },
+          { name: 'Salade de fruits frais de saison', price: 30 },
+          { name: 'Fondant au chocolat', price: 35 },
+          { name: 'Tarte aux pommes maison', price: 30 }
+        ]
+      }
+    ]
   }
 }
 
@@ -220,8 +338,9 @@ function Menu() {
           </h2>
 
           <p className="font-body text-base sm:text-lg text-wood/70 max-w-2xl mx-auto">
-            Découvrez nos spécialités préparées avec passion, des entrées aux
-            grillades, en passant par nos célèbres tacos et paninis.
+            Du petit-déjeuner aux grillades, en passant par nos célèbres tacos,
+            nos boissons chaudes et nos plats signature. Une cuisine variée,
+            préparée chaque jour avec des produits frais.
           </p>
         </motion.div>
 
@@ -280,9 +399,12 @@ function Menu() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 sticky top-20 z-30 py-3 -mx-4 px-4"
+          className="mb-12 sticky top-20 z-30 py-3 -mx-4 px-4"
         >
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 bg-offwhite/80 backdrop-blur-md border border-sage/20 rounded-2xl p-2 shadow-natural">
+          <div
+            className="flex justify-start sm:justify-center gap-2 sm:gap-3 bg-offwhite/80 backdrop-blur-md border border-sage/20 rounded-2xl p-2 shadow-natural overflow-x-auto scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
             {Object.entries(MENU_DATA).map(([key, cat]) => {
               const isActive = activeTab === key
               return (

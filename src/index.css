@@ -151,6 +151,16 @@ h1, h2, h3, h4, h5, h6 {
   animation: soft-pulse 2.5s infinite;
 }
 
+/* Masquer la scrollbar (utilisé sur la barre de tabs du menu) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Lien souligné élégant */
 .link-underline {
   position: relative;
