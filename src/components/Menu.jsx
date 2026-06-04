@@ -308,11 +308,12 @@ function Menu() {
   const activeCategory = MENU_DATA[activeTab]
 
   // Bandeau visuel : image + texte adaptés à l'onglet actif
+  // Tous les onglets utilisent désormais les images menu (menuBoiss / menuRestaut)
   const BANNERS = {
-    entrees:    { image: 'photo2',         title: 'Des saveurs',     italic: 'fraîches',   badge: 'Entrées & salades' },
-    pates:      { image: 'photo2',         title: 'Des saveurs',     italic: 'généreuses', badge: 'Pâtes & Tacos' },
-    sandwichs:  { image: 'photo2',         title: 'Des saveurs',     italic: 'à emporter', badge: 'Sandwichs & Panini' },
-    grillades:  { image: 'photo2',         title: 'Des saveurs',     italic: 'grillées',   badge: 'Au feu de bois' },
+    entrees:    { image: 'menuRestaut',    title: 'Des saveurs',     italic: 'fraîches',   badge: 'Entrées & salades' },
+    pates:      { image: 'menuRestaut',    title: 'Des saveurs',     italic: 'généreuses', badge: 'Pâtes & Tacos' },
+    sandwichs:  { image: 'menuRestaut',    title: 'Des saveurs',     italic: 'à emporter', badge: 'Sandwichs & Panini' },
+    grillades:  { image: 'menuRestaut',    title: 'Des saveurs',     italic: 'grillées',   badge: 'Au feu de bois' },
     menu:       { image: 'menuRestaut',    title: 'Bien',            italic: 'démarrer',   badge: 'Petit-déjeuner & snacks' },
     boissons:   { image: 'menuBoiss',      title: 'Un moment',       italic: 'de pause',   badge: 'Café, thé & jus frais' },
     restaurant: { image: 'menuRestaut',    title: 'Spécialités',     italic: 'du chef',    badge: 'Cuisine marocaine & internationale' }
@@ -369,22 +370,17 @@ function Menu() {
               <source
                 type="image/webp"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 100vw"
-                srcSet={(() => {
-                  const img = currentBanner.image
-                  if (img === 'photo2') {
-                    return '/img/photo2-800.webp 800w, /img/photo2-1200.webp 1200w, /img/photo2-1600.webp 1600w'
-                  }
-                  if (img === 'menuBoiss') {
-                    return '/img/menuBoiss-500.webp 500w, /img/menuBoiss-800.webp 800w'
-                  }
-                  return '/img/menuRestaut-800.webp 800w'
-                })()}
+                srcSet={
+                  currentBanner.image === 'menuBoiss'
+                    ? '/img/menuBoiss-500.webp 500w, /img/menuBoiss-800.webp 800w'
+                    : '/img/menuRestaut-800.webp 800w'
+                }
               />
               <img
                 src={
-                  currentBanner.image === 'photo2' ? '/img/photo2-1200.webp' :
-                  currentBanner.image === 'menuBoiss' ? '/img/menuBoiss-800.webp' :
-                  '/img/menuRestaut-800.webp'
+                  currentBanner.image === 'menuBoiss'
+                    ? '/img/menuBoiss-800.webp'
+                    : '/img/menuRestaut-800.webp'
                 }
                 alt="Spécialités du Café Bilal"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
