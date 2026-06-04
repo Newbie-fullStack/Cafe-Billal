@@ -14,17 +14,21 @@ const FORMATS = [
 
 // Tailles responsives générées (width en pixels)
 const SIZES = {
-  hero: [1920, 1280, 768],      // Hero background : très grand
-  about: [800, 600, 400],       // About : portrait/medium
-  menu: [1600, 1200, 800],      // Menu banner : paysage
-  reservation: [1920, 1280, 768] // Reservation bg : très grand
+  hero: [1920, 1280, 768],         // Hero background : très grand
+  about: [800, 600, 400],          // About : portrait/medium
+  menu: [1600, 1200, 800],         // Menu banner : paysage
+  reservation: [1920, 1280, 768],  // Reservation bg : très grand
+  boissons: [1200, 800, 500],      // Bannière boissons
+  restaurant: [1600, 1200, 800]    // Bannière restaurant
 }
 
 const FILES_CONFIG = {
   'miniature2.png': 'hero',
   'photo1.png': 'about',
   'photo2.png': 'menu',
-  'photo3.png': 'reservation'
+  'photo3.png': 'reservation',
+  'menuBoiss.png': 'boissons',
+  'menuRestaut.png': 'restaurant'
 }
 
 async function optimizeImage(inputPath, baseName) {

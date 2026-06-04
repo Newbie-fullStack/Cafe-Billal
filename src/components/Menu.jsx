@@ -307,6 +307,18 @@ function Menu() {
   const [activeTab, setActiveTab] = useState('entrees')
   const activeCategory = MENU_DATA[activeTab]
 
+  // Bandeau visuel : image + texte adaptés à l'onglet actif
+  const BANNERS = {
+    entrees:    { image: 'photo2',         title: 'Des saveurs',     italic: 'fraîches',   badge: 'Entrées & salades' },
+    pates:      { image: 'photo2',         title: 'Des saveurs',     italic: 'généreuses', badge: 'Pâtes & Tacos' },
+    sandwichs:  { image: 'photo2',         title: 'Des saveurs',     italic: 'à emporter', badge: 'Sandwichs & Panini' },
+    grillades:  { image: 'photo2',         title: 'Des saveurs',     italic: 'grillées',   badge: 'Au feu de bois' },
+    menu:       { image: 'menuRestaut',    title: 'Bien',            italic: 'démarrer',   badge: 'Petit-déjeuner & snacks' },
+    boissons:   { image: 'menuBoiss',      title: 'Un moment',       italic: 'de pause',   badge: 'Café, thé & jus frais' },
+    restaurant: { image: 'menuRestaut',    title: 'Spécialités',     italic: 'du chef',    badge: 'Cuisine marocaine & internationale' }
+  }
+  const currentBanner = BANNERS[activeTab] || BANNERS.entrees
+
   return (
     <section
       id="menu"
@@ -357,14 +369,27 @@ function Menu() {
               <source
                 type="image/webp"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 100vw"
-                srcSet="/img/photo2-800.webp 800w, /img/photo2-1200.webp 1200w, /img/photo2-1600.webp 1600w"
+                srcSet={(() => {
+                  const img = currentBanner.image
+                  if (img === 'photo2') {
+                    return '/img/photo2-800.webp 800w, /img/photo2-1200.webp 1200w, /img/photo2-1600.webp 1600w'
+                  }
+                  if (img === 'menuBoiss') {
+                    return '/img/menuBoiss-500.webp 500w, /img/menuBoiss-800.webp 800w'
+                  }
+                  return '/img/menuRestaut-800.webp 800w'
+                })()}
               />
               <img
-                src="/img/photo2-1200.webp"
-                alt="Spécialités du Café Bilal — pâtes, tacos, grillades"
+                src={
+                  currentBanner.image === 'photo2' ? '/img/photo2-1200.webp' :
+                  currentBanner.image === 'menuBoiss' ? '/img/menuBoiss-800.webp' :
+                  '/img/menuRestaut-800.webp'
+                }
+                alt="Spécialités du Café Bilal"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
-                width="1854"
-                height="848"
+                width="1024"
+                height="1536"
                 loading="lazy"
                 decoding="async"
               />
@@ -374,23 +399,32 @@ function Menu() {
           {/* Overlay vert pour lisibilité du texte */}
           <div className="absolute inset-0 bg-gradient-to-r from-forest/80 via-forest/30 to-transparent pointer-events-none" />
 
-          {/* Texte sur le bandeau */}
-          <div className="absolute inset-y-0 left-0 flex items-center p-6 sm:p-10 lg:p-14 max-w-xl">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-ocre/90 backdrop-blur-sm rounded-full px-3 py-1 mb-3 sm:mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-offwhite" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-offwhite">
-                  Spécialités de la maison
-                </span>
+          {/* Texte sur le bandeau — change selon l'onglet actif */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ duration: 0.35 }}
+              className="absolute inset-y-0 left-0 flex items-center p-6 sm:p-10 lg:p-14 max-w-xl"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 bg-ocre/90 backdrop-blur-sm rounded-full px-3 py-1 mb-3 sm:mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-offwhite" />
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-offwhite">
+                    {currentBanner.badge}
+                  </span>
+                </div>
+                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-offwhite leading-tight drop-shadow-lg">
+                  {currentBanner.title} <span className="italic text-ocre">{currentBanner.italic}</span>
+                </h3>
+                <p className="font-body text-sm sm:text-base text-cream/90 mt-2 sm:mt-3 drop-shadow hidden sm:block">
+                  Une cuisine variée, préparée chaque jour avec des produits frais.
+                </p>
               </div>
-              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-offwhite leading-tight drop-shadow-lg">
-                Des saveurs <span className="italic text-ocre">généreuses</span>
-              </h3>
-              <p className="font-body text-sm sm:text-base text-cream/90 mt-2 sm:mt-3 drop-shadow hidden sm:block">
-                Une cuisine variée, préparée chaque jour avec des produits frais.
-              </p>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
 
         {/* Tabs de navigation */}
