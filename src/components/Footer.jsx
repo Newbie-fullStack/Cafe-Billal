@@ -236,8 +236,14 @@ function Footer() {
           </div>
           <div className="font-body flex items-center gap-2">
             <span>Fait avec</span>
-            <span className="text-ocre">❤</span>
-            <span>au Maroc</span>
+            <a
+              href="https://trivol-x.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ocre hover:text-cream transition-colors"
+            >
+              Trivol-X
+            </a>
           </div>
         </div>
       </div>
